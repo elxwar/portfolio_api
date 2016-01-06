@@ -32,7 +32,7 @@ development:
   #username: mw_api
 
   # The password associated with the postgres role (username).
-  password: P0lly193
+  password: ENV["db_password"]
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
@@ -57,7 +57,7 @@ development:
 test:
   <<: *default
   database: mw_api_test
-  password: P0lly193
+  password: ENV["db_password"]
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
