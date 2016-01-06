@@ -9,6 +9,9 @@ gem 'pg'
 
 gem 'figaro'
 
+# Use ActiveModelSerializers (AMS) to apply serialization to the APi
+gem 'active_model_serializers', '~> 0.9.4'
+
 # Log external http requests
 gem 'httplog'
 
@@ -24,7 +27,7 @@ group :development do
   # Get nicer rails errors in dev :)
   gem 'better_errors'
   gem 'quiet_assets'
-  gem 'spring'
+  # gem 'spring'
 end
 
 group :test do
