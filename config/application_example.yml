@@ -1,0 +1,10 @@
+#Copy this file to application.yml and fill in with your details
+#Do NOT add this file to github in order to keep your keys secret :)
+
+development:
+  db_password: 'your_password'
+  rails_secret_key_base: xxxxxxx
+
+test:
+  db_password: 'your_password'
+  rails_secret_key_base: xxxxxxx
