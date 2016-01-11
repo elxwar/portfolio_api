@@ -3,8 +3,7 @@
 
 development:
   db_password: 'your_password'
-  rails_secret_key_base: xxxxxxx
 
 test:
   db_password: 'your_password'
-  rails_secret_key_base: xxxxxxx
+
