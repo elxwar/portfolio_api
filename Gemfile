@@ -15,6 +15,9 @@ gem 'active_model_serializers', '~> 0.9.4'
 # Log external http requests
 gem 'httplog'
 
+# CORS
+gem 'rack-cors', require: 'rack/cors'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
