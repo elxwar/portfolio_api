@@ -4,8 +4,17 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.all
-
+    # byebug
+    page_opts = {
+      :page => params[:page] || 1,
+      :per_page => params[:perPage] || 10
+    }
+    if params[:order].present?
+      order = params[:order].first == '-' ? params[:order][1..-1] + ' DESC' : params[:order] + ' ASC'
+    else
+      order = 'name ASC'
+    end
+    @galleries = Gallery.all.paginate(page_opts).order(order)
     render json: @galleries
   end
 
@@ -49,11 +58,11 @@ class GalleriesController < ApplicationController
 
   private
 
-    def set_gallery
-      @gallery = Gallery.find(params[:id])
-    end
+  def set_gallery
+    @gallery = Gallery.find(params[:id])
+  end
 
-    def gallery_params
-      params.require(:gallery).permit(:name, :description, :thumbnail)
-    end
+  def gallery_params
+    params.require(:gallery).permit(:name, :description, :thumbnail)
+  end
 end

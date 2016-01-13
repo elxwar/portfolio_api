@@ -26,7 +26,7 @@ module MwApi
     # Handle CORS issues
     config.middleware.insert_before(ActionDispatch::Static, Rack::Cors) do
           allow do
-            origins ENV['local']
+            origins ENV['local'], ENV['local2']
             resource '*',
                 :headers => :any,
                 :methods => [:get, :post, :options, :put, :patch, :delete, :head],
