@@ -9,11 +9,22 @@ class GalleriesController < ApplicationController
       :page => params[:page] || 1,
       :per_page => params[:perPage] || 10
     }
+
+    # if the field to be sorted by is not a string (ie not id) then make case insensitive
     if params[:order].present?
-      order = params[:order].first == '-' ? params[:order][1..-1] + ' DESC' : params[:order] + ' ASC'
+      if params[:order] != 'id' && params[:order] != '-id'
+        order_lower_start = 'lower('
+        order_lower_end = ')'
+      else
+        order_lower_start = order_lower_end = ''
+      end
+      order = params[:order].first == '-' ?
+        order_lower_start + params[:order][1..-1] + order_lower_end + ' DESC' :
+        order_lower_start + params[:order] + order_lower_end + ' ASC'
     else
-      order = 'name ASC'
+      order = 'lower(name) ASC'
     end
+
     @galleries = Gallery.all.paginate(page_opts).order(order)
     render json: @galleries
   end
@@ -65,4 +76,5 @@ class GalleriesController < ApplicationController
   def gallery_params
     params.require(:gallery).permit(:name, :description, :thumbnail)
   end
+
 end
