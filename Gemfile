@@ -5,6 +5,8 @@ gem 'rails', '4.2.5'
 
 gem 'rails-api'
 
+gem 'rake', '~> 10.5'
+
 gem 'pg'
 
 gem 'figaro'
