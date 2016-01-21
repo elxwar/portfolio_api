@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount_devise_token_auth_for 'User', at: 'auth'
   resources :users, except: [:new, :edit]
   resources :galleries, except: [:new, :edit]
   resources :articles, except: [:new, :edit]

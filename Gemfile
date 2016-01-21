@@ -11,6 +11,10 @@ gem 'pg'
 
 gem 'figaro'
 
+gem 'omniauth'
+
+gem 'devise_token_auth'
+
 # Use ActiveModelSerializers (AMS) to apply serialization to the APi
 gem 'active_model_serializers', '~> 0.9.4'
 
