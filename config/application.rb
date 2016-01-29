@@ -25,14 +25,19 @@ module MwApi
 
     # Handle CORS issues
     config.middleware.insert_before(ActionDispatch::Static, Rack::Cors) do
-          allow do
-            origins ENV['local'], ENV['local2']
-            resource '*',
-                :headers => :any,
-                :methods => [:get, :post, :options, :put, :patch, :delete, :head],
-                :max_age => 0
-          end
-        end
+      allow do
+        origins ENV['local'], ENV['local2']
+        resource '*',
+          :headers => :any,
+          :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          :methods => [:get, :post, :options, :put, :patch, :delete, :head],
+          :max_age => 0
+      end
+    end
+
+    config.action_dispatch.default_headers = {
+      'Access-Control-Expose-Headers' => ['access-token', 'expiry', 'token-type', 'uid', 'client'].join(',')
+    }
 
   end
 end

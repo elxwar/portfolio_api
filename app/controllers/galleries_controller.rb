@@ -1,5 +1,5 @@
 class GalleriesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_gallery, only: [:show, :update, :destroy]
 
   # GET /galleries
